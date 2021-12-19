@@ -43,7 +43,7 @@ async def on_startup(dp):
 #     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
 WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = os.environ.get('PORT')
+WEBAPP_PORT = 8443
 WEBHOOK_PATH = '/webhook/'
 
 if __name__ == "__main__":
