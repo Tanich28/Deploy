@@ -46,11 +46,11 @@ async def on_startup(dp):
 WEBAPP_HOST = '0.0.0.0'
 WEBAPP_PORT = os.environ.get('PORT')
 
-WEBHOOK_PATH = '/webhook/'
+WEBHOOK_PATH = f'/webhook/{BOT_TOKEN}'
 
 if __name__ == "__main__":
     # executor.start_polling(dp, skip_updates=True, port=int(os.environ.get("PORT", 5000)))
     from handlers import dp
     start_webhook(dispatcher=dp, webhook_path=WEBHOOK_PATH,
-                  on_startup=on_startup,
+                  on_startup=on_startup, skip_updates=True,
                   host=WEBAPP_HOST, port=WEBAPP_PORT)
