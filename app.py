@@ -13,7 +13,7 @@ from utils.set_bot_commands import set_default_commands
 # bot = telebot.TeleBot(BOT_TOKEN)
 # server = Flask(__name__)
 async def on_startup(dp):
-    await bot.set_webhook(APP_URL)
+    # await bot.set_webhook(APP_URL)
     import filters
     import middlewares
     filters.setup(dp)
@@ -43,14 +43,14 @@ async def on_startup(dp):
 #     bot.set_webhook(url=APP_URL)
 #     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
-WEBAPP_HOST = '0.0.0.0'
-WEBAPP_PORT = os.environ.get('PORT')
-
-WEBHOOK_PATH = f'/webhook/{BOT_TOKEN}'
-
+# WEBAPP_HOST = '0.0.0.0'
+# WEBAPP_PORT = os.environ.get('PORT')
+#
+# WEBHOOK_PATH = f'/webhook/{BOT_TOKEN}'
+#
 if __name__ == "__main__":
-    # executor.start_polling(dp, skip_updates=True, port=int(os.environ.get("PORT", 5000)))
-    from handlers import dp
-    start_webhook(dispatcher=dp, webhook_path=WEBHOOK_PATH,
-                  on_startup=on_startup, skip_updates=True,
-                  host=WEBAPP_HOST, port="5000")
+    executor.start_polling(dp, skip_updates=True)
+#     from handlers import dp
+#     start_webhook(dispatcher=dp, webhook_path=WEBHOOK_PATH,
+#                   on_startup=on_startup, skip_updates=True,
+#                   host=WEBAPP_HOST, port="5000")
