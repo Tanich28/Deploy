@@ -19,7 +19,7 @@ async def on_startup(dp):
     middlewares.setup(dp)
 
     from utils.notify_admins import on_startup_notify
-    # await bot.set_webhook(APP_URL)
+    await bot.set_webhook(APP_URL)
     await on_startup_notify(dp)
     await set_default_commands(dp)
 
