@@ -50,7 +50,7 @@ WEBHOOK_PATH = '/webhook/'
 
 if __name__ == "__main__":
     # executor.start_polling(dp, skip_updates=True, port=int(os.environ.get("PORT", 5000)))
-
-    start_webhook(dp, webhook_path=WEBHOOK_PATH,
+    from handlers import dp
+    start_webhook(dispatcher=dp, webhook_path=WEBHOOK_PATH,
                   on_startup=on_startup,
                   host=WEBAPP_HOST, port=WEBAPP_PORT)
