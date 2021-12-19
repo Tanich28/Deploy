@@ -2,6 +2,7 @@ import os
 
 import telebot
 from aiogram.utils import executor
+from aiogram.utils.executor import start_webhook
 from flask import Flask, request
 
 from data.config import APP_URL, BOT_TOKEN
@@ -41,5 +42,13 @@ async def on_startup(dp):
 #     bot.set_webhook(url=APP_URL)
 #     server.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
 
+WEBAPP_HOST = '0.0.0.0'
+WEBAPP_PORT = os.environ.get('PORT')
+WEBHOOK_PATH = '/webhook/'
+
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    # executor.start_polling(dp, skip_updates=True, port=int(os.environ.get("PORT", 5000)))
+
+    start_webhook(dispatcher=dp, webhook_path=WEBHOOK_PATH,
+                  on_startup=on_startup,
+                  host=WEBAPP_HOST, port=WEBAPP_PORT)
